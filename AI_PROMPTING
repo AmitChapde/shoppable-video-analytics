@@ -1,0 +1,35 @@
+# AI Prompting Log
+
+## 1. Express API Structure
+
+### Tool Used
+
+ChatGPT
+
+### Context / Task
+
+Setting up Express with SQLite.
+
+### Exact Prompt Used
+
+> How should I structure a small Express API using SQLite with routes, controllers, and services without overengineering it?
+
+### Outcome & Adjustments
+
+Used a simple route-controller-service structure with a shared SQLite connection. Skipped unnecessary repository and ORM layers.
+
+## 2. SQLite Database Schema Design
+
+### Context / Task
+
+Designing the SQLite database schema while comparing relational database concepts with MongoDB, which I am more familiar with from MERN development.
+
+### Exact Prompt Used
+
+> I have mainly worked with MongoDB in MERN projects and am learning SQL for this assignment. Help me understand how to model Products, Videos, and EngagementEvents in SQLite and compare the relationships, references, and constraints with how I would approach this in MongoDB. I want to understand the design before implementing it myself.
+
+### Outcome & Adjustments
+
+Used the comparison with MongoDB documents and references to understand how SQL tables and foreign keys represent the same relationships. Based on that understanding, I implemented three normalized tables with primary keys, foreign keys, constraints for valid event types and prices, and indexes for the expected analytics queries. I kept the design simple for the scope of the assignment.
+
+
