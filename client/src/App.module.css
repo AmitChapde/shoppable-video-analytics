@@ -1,10 +1,20 @@
 .appContainer {
   min-height: 100vh;
-  padding: 32px;
-  background-color: #f5f5f5;
+  padding: 40px;
+  background-color: #f5f7fb;
 }
 
-.paginationInfo {
-  margin-top: 16px;
-  color: #666666;
+.dashboardContent {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.tableSection {
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .appContainer {
+    padding: 20px;
+  }
 }

@@ -1,22 +1,24 @@
 import { useEffect, useState } from "react";
 import { createEvent, getVideoAnalytics } from "./services/analyticsApi";
 import DashboardHeader from "./components/DashboardHeader/DashboardHeader";
+import Pagination from "./components/Pagination/Pagination";
 import VideoTable from "./components/VideoTable/VideoTable";
 import styles from "./App.module.css";
 
 function App() {
   const [analyticsData, setAnalyticsData] = useState([]);
   const [pagination, setPagination] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
   const [isSimulating, setIsSimulating] = useState(false);
   const [error, setError] = useState("");
 
-  const fetchAnalytics = async () => {
+  const fetchAnalytics = async (page = currentPage) => {
     try {
       setIsLoading(true);
       setError("");
 
-      const data = await getVideoAnalytics();
+      const data = await getVideoAnalytics(page, 2);
 
       setAnalyticsData(data.videos);
       setPagination(data.pagination);
@@ -28,8 +30,12 @@ function App() {
   };
 
   useEffect(() => {
-    fetchAnalytics();
-  }, []);
+    fetchAnalytics(currentPage);
+  }, [currentPage]);
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+  };
 
   const handleSimulateTraffic = async () => {
     if (analyticsData.length === 0) {
@@ -76,20 +82,18 @@ function App() {
 
   return (
     <main className={styles.appContainer}>
-      <DashboardHeader
-        onSimulateTraffic={handleSimulateTraffic}
-        isSimulating={isSimulating}
-      />
+      <div className={styles.dashboardContent}>
+        <DashboardHeader
+          onSimulateTraffic={handleSimulateTraffic}
+          isSimulating={isSimulating}
+        />
 
-      <section>
-        <VideoTable videos={analyticsData} />
-      </section>
+        <section className={styles.tableSection}>
+          <VideoTable videos={analyticsData} />
+        </section>
 
-      {pagination && (
-        <p className={styles.paginationInfo}>
-          Showing page {pagination.page} of {pagination.totalPages}
-        </p>
-      )}
+        <Pagination pagination={pagination} onPageChange={handlePageChange} />
+      </div>
     </main>
   );
 }

@@ -1,33 +1,39 @@
-
-
 .tableContainer {
   width: 100%;
   overflow-x: auto;
   background-color: #ffffff;
-  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
 }
 
 .analyticsTable {
   width: 100%;
-  border-collapse: collapse;
   min-width: 700px;
+  border-collapse: collapse;
 }
 
 .analyticsTable th,
 .analyticsTable td {
-  padding: 16px;
+  padding: 16px 20px;
   text-align: left;
-  border-bottom: 1px solid #e5e5e5;
+  border-bottom: 1px solid #e5e7eb;
 }
 
 .analyticsTable th {
-  font-size: 14px;
+  background-color: #f9fafb;
+  font-size: 13px;
   font-weight: 600;
-  color: #555555;
+  color: #6b7280;
+  text-transform: uppercase;
 }
 
 .analyticsTable td {
   font-size: 14px;
+  color: #374151;
+}
+
+.analyticsTable tbody tr:hover {
+  background-color: #f9fafb;
 }
 
 .analyticsTable tbody tr:last-child td {
