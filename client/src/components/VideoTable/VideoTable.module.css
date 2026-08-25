@@ -1,0 +1,35 @@
+
+
+.tableContainer {
+  width: 100%;
+  overflow-x: auto;
+  background-color: #ffffff;
+  border-radius: 8px;
+}
+
+.analyticsTable {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 700px;
+}
+
+.analyticsTable th,
+.analyticsTable td {
+  padding: 16px;
+  text-align: left;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.analyticsTable th {
+  font-size: 14px;
+  font-weight: 600;
+  color: #555555;
+}
+
+.analyticsTable td {
+  font-size: 14px;
+}
+
+.analyticsTable tbody tr:last-child td {
+  border-bottom: none;
+}

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getVideoAnalytics } from "./services/analyticsApi";
+import VideoTable from "./components/VideoTable/VideoTable";
 import styles from "./App.module.css";
 
 function App() {
@@ -45,16 +46,18 @@ function App() {
 
   return (
     <main className={styles.appContainer}>
-      <h1>Shoppable Video Analytics</h1>
-      <p>Track how your shoppable videos are performing.</p>
+      <header className={styles.dashboardHeader}>
+        <h1>Shoppable Video Analytics</h1>
+        <p>Track how your shoppable videos are performing.</p>
+      </header>
 
-      <p>
-        Videos loaded: {analyticsData.length}
-      </p>
+      <section>
+        <VideoTable videos={analyticsData} />
+      </section>
 
       {pagination && (
-        <p>
-          Page {pagination.page} of {pagination.totalPages}
+        <p className={styles.paginationInfo}>
+          Showing page {pagination.page} of {pagination.totalPages}
         </p>
       )}
     </main>
