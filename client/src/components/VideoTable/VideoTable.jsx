@@ -31,12 +31,7 @@ function VideoTable({ videos }) {
               <td>{video.views}</td>
               <td>{video.clicks}</td>
               <td>{video.conversions}</td>
-              <td>
-                {calculateConversionRate(
-                  video.conversions,
-                  video.views
-                )}
-              </td>
+              <td>{calculateConversionRate(video.conversions, video.views)}</td>
             </tr>
           ))}
         </tbody>

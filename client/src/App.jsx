@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { getVideoAnalytics } from "./services/analyticsApi";
+import { createEvent, getVideoAnalytics } from "./services/analyticsApi";
+import DashboardHeader from "./components/DashboardHeader/DashboardHeader";
 import VideoTable from "./components/VideoTable/VideoTable";
 import styles from "./App.module.css";
 
@@ -7,26 +8,55 @@ function App() {
   const [analyticsData, setAnalyticsData] = useState([]);
   const [pagination, setPagination] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [isSimulating, setIsSimulating] = useState(false);
   const [error, setError] = useState("");
 
+  const fetchAnalytics = async () => {
+    try {
+      setIsLoading(true);
+      setError("");
+
+      const data = await getVideoAnalytics();
+
+      setAnalyticsData(data.videos);
+      setPagination(data.pagination);
+    } catch (error) {
+      setError(error.message);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   useEffect(() => {
-    const fetchAnalytics = async () => {
-      try {
-        setIsLoading(true);
-
-        const data = await getVideoAnalytics();
-
-        setAnalyticsData(data.videos);
-        setPagination(data.pagination);
-      } catch (error) {
-        setError(error.message);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
     fetchAnalytics();
   }, []);
+
+  const handleSimulateTraffic = async () => {
+    if (analyticsData.length === 0) {
+      return;
+    }
+
+    const eventTypes = ["view", "click", "add_to_cart"];
+
+    const randomVideo =
+      analyticsData[Math.floor(Math.random() * analyticsData.length)];
+
+    const randomEventType =
+      eventTypes[Math.floor(Math.random() * eventTypes.length)];
+
+    try {
+      setIsSimulating(true);
+      setError("");
+
+      await createEvent(randomVideo.id, randomEventType);
+
+      await fetchAnalytics();
+    } catch (error) {
+      setError(error.message);
+    } finally {
+      setIsSimulating(false);
+    }
+  };
 
   if (isLoading) {
     return (
@@ -46,10 +76,10 @@ function App() {
 
   return (
     <main className={styles.appContainer}>
-      <header className={styles.dashboardHeader}>
-        <h1>Shoppable Video Analytics</h1>
-        <p>Track how your shoppable videos are performing.</p>
-      </header>
+      <DashboardHeader
+        onSimulateTraffic={handleSimulateTraffic}
+        isSimulating={isSimulating}
+      />
 
       <section>
         <VideoTable videos={analyticsData} />

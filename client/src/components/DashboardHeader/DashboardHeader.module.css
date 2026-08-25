@@ -1,0 +1,36 @@
+.dashboardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.headerContent h1 {
+  margin: 0 0 8px;
+}
+
+.headerContent p {
+  margin: 0;
+  color: #666666;
+}
+
+.simulateButton {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.simulateButton:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+@media (max-width: 600px) {
+  .dashboardHeader {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
