@@ -87,3 +87,17 @@ Building the SQL query for aggregated video engagement analytics.
 ### Outcome & Adjustments
 
 Implemented the analytics query using joins, conditional aggregation, and GROUP BY. Used a LEFT JOIN so videos without engagement events are still included and added pagination using LIMIT and OFFSET.
+
+## Prompt 7: README Documentation Structure
+
+### Context / Task
+
+Organizing the project README to clearly document the application, architecture, setup process, API endpoints, and submission requirements.
+
+### Exact Prompt Used
+
+> Help me create a clear README structure for my full-stack shoppable video analytics assignment. Include project overview, features, architecture, database design, API documentation, setup instructions, design decisions, and placeholders for the required repository and video links.
+
+### Outcome & Adjustments
+
+Created a structured README covering the application features, backend architecture, database relationships, API endpoints, local setup, and design decisions. The README was kept focused on the implemented features and includes placeholders for the required submission links.
