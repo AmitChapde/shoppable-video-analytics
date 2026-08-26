@@ -47,6 +47,7 @@ shoppable-video-analytics/
 |   |   |   +-- analyticsApi.js
 |   |   +-- App.jsx
 |   |   +-- App.module.css
+|   +-- .env.example
 |   +-- package.json
 |
 +-- server/
@@ -57,6 +58,7 @@ shoppable-video-analytics/
 |   |   +-- routes/
 |   |   +-- services/
 |   |   +-- server.js
+|   +-- .env.example
 |   +-- package.json
 |
 +-- README.md
@@ -271,6 +273,25 @@ Move into the project:
 cd shoppable-video-analytics
 ```
 
+Create local environment files from the examples:
+
+```bash
+cp server/.env.example server/.env
+cp client/.env.example client/.env
+```
+
+The server example includes:
+
+```text
+PORT=5000
+```
+
+The client example includes:
+
+```text
+VITE_API_URL=http://localhost:5000/api
+```
+
 ### Backend Setup
 
 Move into the server directory:
@@ -401,19 +422,24 @@ Using a `LEFT JOIN` ensures those videos are still returned with zero engagement
 
 ## Project Links
 
+### Deployed Application
+
+[https://client-sepia-omega.vercel.app/](https://client-sepia-omega.vercel.app/)
+
 ### GitHub Repository
 
-[Add your GitHub repository link here]
+[https://github.com/AmitChapde/shoppable-video-analytics](https://github.com/AmitChapde/shoppable-video-analytics)
 
 ### Other Public Repositories
 
-- https://github.com/your-username/project-one
-- https://github.com
+- [Hidden Word Duel](https://github.com/AmitChapde/HiddenWordDuel)
+- [Event Management Application](https://github.com/AmitChapde/Event-Management-Application)
+- [AI Workspace](https://github.com/AmitChapde/AI-Workspace)
 
 ### 30-Second Candidate Pitch
 
-[Add your private or unlisted YouTube link here]
+[Candidate Pitch](https://youtu.be/Mwu6Oc4qRok)
 
 ### Technical Walkthrough
 
-[Add your Loom or screen recording link here]
+[Technical Walkthrough](https://youtu.be/OSgSuLekif8)
